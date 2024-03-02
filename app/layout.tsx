@@ -9,7 +9,7 @@ import Navbar from "@/components/navbar";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "A&B LIQOUR | Austin, TX",
+  title: "A&B LIQUOR | Austin, TX",
   description: "E-commerce site for East Austin's premeir liquor destination",
 };
 
