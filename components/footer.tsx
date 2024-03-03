@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="">
           <div className="space-y-8 relative">
             <Image
-              width={80}
+              width={100}
               height={100}
               alt="A&B Logo"
               className="h-12 aspect-square"

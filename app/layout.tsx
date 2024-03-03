@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Urbanist, Roboto, Lato } from "next/font/google";
 
 import Footer from "@/components/footer";
 
@@ -8,7 +8,7 @@ import Navbar from "@/components/navbar";
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
 
-const font = Urbanist({ subsets: ["latin"] });
+const font = Lato({ subsets: ["latin"], weight: ["100", "300", "400", "700", "900"] });
 
 export const metadata: Metadata = {
   title: "A&B LIQUOR | Austin, TX",
