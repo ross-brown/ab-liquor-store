@@ -1,5 +1,6 @@
 import { Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 
 
@@ -97,17 +98,17 @@ export default function Footer() {
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      FAQ
-                    </a>
+                    <Link href="/faq" className="text-sm leading-6 text-gray-600">
+                      FAQs
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
+                    <Link href="#" className="text-sm leading-6 text-gray-600">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="https://www.google.com/maps?q=ab+liquor+2234+east+ben+white+boulevard+austin+tx+78741,30.21655,-97.73974" className="text-sm leading-6 text-gray-600">
+                    <a href="https://www.google.com/maps?q=ab+liquor+2234+east+ben+white+boulevard+austin+tx+78741,30.21655,-97.73974" target="_blank" className="text-sm leading-6 text-gray-600">
                       Location
                     </a>
                   </li>
