@@ -126,10 +126,8 @@ export default function Footer() {
                   <li className="text-sm leading-6 text-gray-600">
                       Mon - Sat: 10:00 AM - 9:00 PM
                   </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
+                  <li className="text-sm leading-6 text-gray-600">
                       Sun: Closed
-                    </a>
                   </li>
                 </ul>
               </div>
