@@ -22,18 +22,18 @@ export default function CartItem({ data }: CartItemProps) {
   }
 
   return (
-    <li className="flex py-6 border-b">
+    <li className="flex py-8 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
           src={data.images[0].url}
           alt=""
-          className="object-cover object-center"
+          className="object-contain object-center"
         />
       </div>
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-        <div className="absolute z-10 right-0 top-0">
-          <IconButton onClick={onRemove} icon={<X size={15} />} />
+        <div className="absolute z-10 right-0 -top-7">
+          <IconButton onClick={onRemove} icon={<X size={15} className="text-red-600"/>} />
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">

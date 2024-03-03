@@ -12,8 +12,6 @@ interface MainNavProps {
 const MainNav = ({ data }: MainNavProps) => {
   const pathname = usePathname();
 
-  
-
   const routes = data.map((route) => ({
     href: `/category/${route.id}`,
     label: route.name,
@@ -22,18 +20,18 @@ const MainNav = ({ data }: MainNavProps) => {
 
   return (
     <nav
-      className="mx-6 flex items-center space-x-4 lg:space-x-6"
+      className="mx-6 flex items-center space-x-4 lg:space-x-10"
     >
       {routes.map(route => (
         <Link
           href={route.href}
           key={route.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-black",
+            "text-sm font-semibold transition-colors hover:text-black",
             route.active ? "text-black" : "text-neutral-500"
           )}
         >
-          {route.label}
+          {route.label.toUpperCase()}
         </Link>
       ))}
     </nav>

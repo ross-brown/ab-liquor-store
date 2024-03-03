@@ -13,6 +13,9 @@ const font = Urbanist({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "A&B LIQUOR | Austin, TX",
   description: "E-commerce site for East Austin's premeir liquor destination",
+  icons: {
+    icon: "/images/abl_logo.ico"
+  }
 };
 
 export default function RootLayout({
