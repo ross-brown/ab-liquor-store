@@ -1,9 +1,7 @@
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
-
-
 
 export default function Footer() {
   return (
@@ -32,6 +30,14 @@ export default function Footer() {
                 <span className="sr-only">Email</span>
                 <Mail className="h-6 w-6" />
               </a>
+            </div>
+            <div>
+              <div className="flex gap-3">
+                <Phone className="h-6 w-6 text-gray-600" />
+                <p className="text-gray-600">
+                 <a href="tel:5124456319">(512) 445-6319</a>
+                </p>
+              </div>
             </div>
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8">
@@ -63,36 +69,7 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              {/* <div className="mt-10 md:mt-0">
-                <h3 className="text-sm leading-6 font-semibold text-gray-900">
-                  About Us
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Contact Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Marketing
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Marketing
-                    </a>
-                  </li>
-                </ul>
-              </div> */}
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
+              <div className="mt-10 md:mt-0">
                 <h3 className="text-base leading-6 font-semibold text-gray-900">
                   About Us
                 </h3>
@@ -119,16 +96,45 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              <div className="mt-10 md:mt-0">
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              {/* <div>
+                <h3 className="text-base leading-6 font-semibold text-gray-900">
+                  About Us
+                </h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  <li>
+                    <Link href="/faq" className="text-sm leading-6 text-gray-600">
+                      FAQs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="text-sm leading-6 text-gray-600">
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="https://www.google.com/maps?q=ab+liquor+2234+east+ben+white+boulevard+austin+tx+78741,30.21655,-97.73974" target="_blank" className="text-sm leading-6 text-gray-600">
+                      Location
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-sm leading-6 text-gray-600 invisible">
+                      {"-"}
+                    </a>
+                  </li>
+                </ul>
+              </div> */}
+              <div>
                 <h3 className="text-base leading-6 font-semibold text-gray-900">
                   Store Hours
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li className="text-sm leading-6 text-gray-600">
-                      Mon - Sat: 10:00 AM - 9:00 PM
+                    Mon - Sat: 10:00 AM - 9:00 PM
                   </li>
                   <li className="text-sm leading-6 text-gray-600">
-                      Sun: Closed
+                    Sun: Closed
                   </li>
                 </ul>
               </div>
