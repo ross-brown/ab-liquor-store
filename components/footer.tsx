@@ -80,7 +80,7 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#" className="text-sm leading-6 text-gray-600">
+                    <Link href="/contact-us" className="text-sm leading-6 text-gray-600">
                       Contact Us
                     </Link>
                   </li>
