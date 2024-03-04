@@ -8,7 +8,7 @@ export default function Billboard({ data }: BillboardProps) {
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <div
-        className="rounded-xl relative aspect-square md:aspect-[4/1.3] overflow-hidden bg-cover md:bg-center"
+        className="rounded-xl relative aspect-[4/1.3] overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${data?.imageUrl})` }}
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-center gap-y-8">

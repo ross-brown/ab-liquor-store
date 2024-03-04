@@ -11,7 +11,7 @@ export default function ContactPage() {
             Get in touch
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We appreciate our customers and are here to support you with any questions, inquiries, or feedback you may have. Feel free to reach out to us through the contact form, and we&apos;ll strive to respond promptly to assist you with your needs.
+            We appreciate our customers and are here to support you with any questions, inquiries, or feedback you may have. Feel free to reach out to us through the contact form, and we will respond as soon as possible.
           </p>
           <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
             <div className="flex gap-x-4">
@@ -49,6 +49,9 @@ export default function ContactPage() {
             </div>
           </dl>
         </div>
+      </div>
+      <div className="text-center pt-6">
+        <p className="text-gray-500">Fields marked with an * are required</p>
       </div>
       <ContactForm />
     </div>

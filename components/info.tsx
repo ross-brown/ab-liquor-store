@@ -9,6 +9,7 @@ import Button from "./ui/button";
 import useCart from "@/hooks/use-cart";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useState } from "react";
+import ReviewStars from "./ui/review-stars";
 
 interface InfoProps {
   data: Product;
@@ -26,10 +27,11 @@ export default function Info({ data }: InfoProps) {
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <div className="mt-3 flex items-end justify-between">
+      <div className="mt-3 flex items-center justify-start gap-x-5">
         <p className="text-2xl text-gray-900">
           <Currency value={data.price} />
         </p>
+        <ReviewStars />
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
