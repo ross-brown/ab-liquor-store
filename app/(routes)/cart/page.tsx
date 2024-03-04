@@ -31,7 +31,7 @@ export default function CartPage() {
               <ul>
                 {cart.items.map(item => (
                   <CartItem
-                    key={item.id}
+                    key={item.product.id}
                     data={item}
                   />
                 ))}

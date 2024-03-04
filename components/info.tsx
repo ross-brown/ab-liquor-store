@@ -7,16 +7,20 @@ import { Product } from "@/types";
 import Currency from "./ui/currency";
 import Button from "./ui/button";
 import useCart from "@/hooks/use-cart";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { useState } from "react";
 
 interface InfoProps {
   data: Product;
 }
 
 export default function Info({ data }: InfoProps) {
+  const [quantity, setQuantity] = useState("1");
+
   const cart = useCart();
 
   function addToCart() {
-    cart.addItem(data);
+    cart.addItem(data, Number(quantity));
   }
 
   return (
@@ -57,6 +61,21 @@ export default function Info({ data }: InfoProps) {
           Add to Cart
           <ShoppingCart />
         </Button>
+        <Select onValueChange={(value) => setQuantity(value)} defaultValue={quantity}>
+          <SelectTrigger className="w-16">
+            <SelectValue placeholder="Quantity" />
+          </SelectTrigger>
+          <SelectContent>
+            {[...Array(10)].map((_, i) => (
+              <SelectItem
+                key={i}
+                value={(i + 1).toString()}
+              >
+                {i + 1}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );

@@ -25,11 +25,14 @@ export default function Summary() {
     }
   }, [searchParams, removeAll]);
 
-  const totalPrice = items.reduce((total, item) => total + Number(item.price), 0);
+  const totalPrice = items.reduce((total, item) => {
+    const totalProductPrice = Number(item.product.price) * item.quantity;
+    return total + totalProductPrice;
+  }, 0);
 
   async function onCheckout() {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-      productIds: items.map(item => item.id),
+      productIds: items.map(item => item.product.id),
     });
 
     window.location = response.data.url;

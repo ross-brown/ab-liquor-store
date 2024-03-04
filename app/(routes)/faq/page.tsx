@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Container from "@/components/ui/container";
+import Link from "next/link";
 
 export default function FaqPage() {
   return (
@@ -20,13 +21,13 @@ export default function FaqPage() {
               <AccordionItem value="quesiton-2">
                 <AccordionTrigger>Return Policy?</AccordionTrigger>
                 <AccordionContent>
-                  All sales are final and there are no returns or exchanges allowed. If there is an issue with a product, please contact the store.
+                  All sales are final and there are no returns or exchanges allowed. If there is an issue with a product, please <Link href="/contact-us" className="font-bold">contact</Link> the store.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="quesiton-3">
                 <AccordionTrigger>Can I add items to an existing order?</AccordionTrigger>
                 <AccordionContent>
-                  No, orders cannot be edited online once it is placed. Please contact us to see how we can help.
+                  No, orders cannot be edited online once it is placed. Please <Link href="/contact-us" className="font-bold">contact</Link> us to see how we can help.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="quesiton-4">
@@ -36,15 +37,17 @@ export default function FaqPage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="quesiton-5">
-                <AccordionTrigger>Can I add items to an existing order?</AccordionTrigger>
+                <AccordionTrigger>
+                  I do not see a specific Beer, Wine or Liquor I would like to purchase, can I make a special order?
+                </AccordionTrigger>
                 <AccordionContent>
-                  No, orders cannot be edited online once it is placed. Please contact us to see how we can help.
+                  If you do not see a product that you are looking for, please <Link href="/contact-us" className="font-bold">contact</Link> the store.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="quesiton-6">
                 <AccordionTrigger>What if I am not satisfied with my order?</AccordionTrigger>
                 <AccordionContent>
-                  Please reach out to us and we will do our best to make it right!
+                  Please <Link href="/contact-us" className="font-bold">reach out</Link> to us and we will do our best to make it right!
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
