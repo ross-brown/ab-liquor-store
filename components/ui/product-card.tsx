@@ -10,8 +10,8 @@ import Currency from "@/components/ui/currency";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
-import ReviewStars from "./review-stars";
 import { FaStar } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa6";
 
 interface ProductCardProps {
   data: Product;
@@ -55,7 +55,7 @@ export default function ProductCard({ data }: ProductCardProps) {
               />
               <IconButton
                 onClick={onAddToCart}
-                icon={<ShoppingCart size={20} className="text-gray-600" />}
+                icon={<FaCartPlus size={20} className="text-gray-600" />}
                 ariaLabel="Add to cart"
               />
             </div>

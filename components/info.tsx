@@ -10,6 +10,7 @@ import useCart from "@/hooks/use-cart";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useState } from "react";
 import ReviewStars from "./ui/review-stars";
+import { FaCartPlus } from "react-icons/fa6";
 
 interface InfoProps {
   data: Product;
@@ -61,7 +62,7 @@ export default function Info({ data }: InfoProps) {
       <div className="mt-10 flex items-center gap-x-3">
         <Button onClick={addToCart} className="flex items-center gap-x-2 bg-primary">
           Add to Cart
-          <ShoppingCart />
+          <FaCartPlus size={24} />
         </Button>
         <Select onValueChange={(value) => setQuantity(value)} defaultValue={quantity}>
           <SelectTrigger className="w-16">
