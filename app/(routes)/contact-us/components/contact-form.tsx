@@ -10,6 +10,7 @@ import Button from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -52,6 +53,9 @@ export default function ContactForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
       >
+        <FormDescription className="text-center pb-12 text-gray-500">
+          Fields marked with an * are required
+        </FormDescription>
         <div className="mx-auto max-w-[36rem] lg:mr-0 lg:max-w-[32rem]">
           <div className="grid grid-cols-1 gap-y-6">
             <FormField

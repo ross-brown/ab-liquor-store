@@ -5,7 +5,7 @@ import ContactForm from "./components/contact-form";
 export default function ContactPage() {
   return (
     <div className="mx-auto grid max-w-[80rem] grid-cols-1 lg:grid-cols-2">
-      <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48 bg-gradient-to-br from-gray-300 to-white">
+      <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
         <div className="mx-auto max-w-[36rem] lg:mx-0 lg:max-w-[32rem]">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900">
             Get in touch
@@ -49,9 +49,6 @@ export default function ContactPage() {
             </div>
           </dl>
         </div>
-      </div>
-      <div className="text-center pt-6">
-        <p className="text-gray-500">Fields marked with an * are required</p>
       </div>
       <ContactForm />
     </div>

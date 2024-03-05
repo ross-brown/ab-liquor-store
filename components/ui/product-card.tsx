@@ -51,10 +51,12 @@ export default function ProductCard({ data }: ProductCardProps) {
               <IconButton
                 onClick={onPreview}
                 icon={<Expand size={20} className="text-gray-600" />}
+                ariaLabel="Open preview"
               />
               <IconButton
                 onClick={onAddToCart}
                 icon={<ShoppingCart size={20} className="text-gray-600" />}
+                ariaLabel="Add to cart"
               />
             </div>
           </div>
