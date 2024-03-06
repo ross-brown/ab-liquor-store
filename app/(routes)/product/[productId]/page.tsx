@@ -3,6 +3,7 @@ import getProducts from "@/actions/get-products";
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 import ProductList from "@/components/product-list";
+import ReviewList from "@/components/review-list";
 import Container from "@/components/ui/container";
 
 interface ProductPageProps {
@@ -10,8 +11,6 @@ interface ProductPageProps {
     productId: string;
   };
 }
-
-
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
@@ -32,6 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
           <hr className="my-10" />
           <ProductList title="Related Products" items={suggestedProducts} />
+          <ReviewList reviews={[]} />
         </div>
       </Container>
     </div>

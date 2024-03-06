@@ -20,7 +20,7 @@ export interface Product {
   isFeatured: boolean;
   size: Size;
   country: Country;
-  images: Image[]
+  images: Image[];
 }
 
 export interface Image {
@@ -38,4 +38,11 @@ export interface Country {
   id: string;
   name: string;
   value: string;
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  text: string;
+  stars: number;
 }

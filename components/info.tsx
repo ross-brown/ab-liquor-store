@@ -32,7 +32,10 @@ export default function Info({ data }: InfoProps) {
         <p className="text-2xl text-gray-900">
           <Currency value={data.price} />
         </p>
-        <ReviewStars />
+        <div className="flex items-center">
+          <ReviewStars stars={5} />
+          <p className="text-sm ml-2 text-gray-500">{53} reviews</p>
+        </div>
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
