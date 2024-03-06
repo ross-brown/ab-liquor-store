@@ -15,9 +15,10 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
-  const suggestedProducts = await getProducts({
+  const productsInCategory = await getProducts({
     categoryId: product?.category?.id
   });
+  const suggestedProducts = productsInCategory.filter(p => p.id !== product.id);
 
   return (
     <div className="bg-white">
@@ -30,7 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Related Items" items={suggestedProducts} />
+          <ProductList title="Related Products" items={suggestedProducts} />
         </div>
       </Container>
     </div>
