@@ -45,4 +45,5 @@ export interface Review {
   author: string;
   text: string;
   stars: number;
+  createdAt: string;
 }

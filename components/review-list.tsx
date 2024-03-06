@@ -11,10 +11,7 @@ interface ReviewListProps {
 }
 
 export default function ReviewList({ reviews }: ReviewListProps) {
-
-  const averageStars = 4;
-
-
+  const averageStars = 4; //calculate from reviews
 
   return (
     <div
@@ -128,6 +125,7 @@ export default function ReviewList({ reviews }: ReviewListProps) {
           >
             Write a review
           </Link>
+          {/* TODO: OPEN A MODAL FOR FORM */}
         </div>
       </div>
       <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
@@ -138,20 +136,23 @@ export default function ReviewList({ reviews }: ReviewListProps) {
               id: "99",
               author: "Michelle Chahda",
               text: "This stuff is AMAZING! I highly recommend!",
-              stars: 5
+              stars: 5,
+              createdAt: "Mar, 6, 2023"
             }} />
             <Review data={{
               id: "93",
               author: "Ross Brown",
               text: "This is another review",
-              stars: 3
+              stars: 3,
+              createdAt: "Mar, 6, 2023"
             }}
             />
             <Review data={{
               id: "912",
               author: "Stephen Brown",
               text: "Never a let down. Good for football games and gatherings on the weekends.",
-              stars: 4
+              stars: 4,
+              createdAt: "Mar, 6, 2023"
             }} />
           </div>
         </div>

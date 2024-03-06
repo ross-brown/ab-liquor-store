@@ -10,10 +10,13 @@ export default function Review({ data }: ReviewProps) {
     <div className="py-12">
       <div className="flex items-center">
         {/* <Image /> */}
-        <div className="ml-4">
+        <div className="">
           <h4 className="text-sm font-bold text-gray-900">
             {data.author}
           </h4>
+          <p className="text-sm text-gray-400">
+            {data.createdAt}
+          </p>
           <div className="mt-1 flex items-center">
             <ReviewStars stars={data.stars} />
           </div>
