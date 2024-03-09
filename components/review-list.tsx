@@ -1,10 +1,13 @@
+"use client";
+
 import { Review as ReviewType } from "@/types";
 import ReviewStars from "./ui/review-stars";
 import { FaStar } from "react-icons/fa";
 import { Progress } from "./ui/progress";
 import Link from "next/link";
-import Image from "next/image";
 import Review from "./review";
+import useReviewModal from "@/hooks/use-review-modal";
+import Button from "./ui/button";
 
 interface ReviewListProps {
   reviews: ReviewType[];
@@ -12,6 +15,8 @@ interface ReviewListProps {
 
 export default function ReviewList({ reviews }: ReviewListProps) {
   const averageStars = 4; //calculate from reviews
+
+  const { onOpen } = useReviewModal();
 
   return (
     <div
@@ -119,13 +124,13 @@ export default function ReviewList({ reviews }: ReviewListProps) {
           <p className="mt-1 text-sm text-gray-600">
             If you&apos;ve used this product, share your thoughts with other customers
           </p>
-          <Link
-            href="#"
-            className="mt-6 inline-flex w-full items-center justify-center rounded-sm border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100"
+          <Button
+            onClick={onOpen}
+            className={`mt-6 inline-flex w-full items-center justify-center rounded-sm border
+             border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100`}
           >
             Write a review
-          </Link>
-          {/* TODO: OPEN A MODAL FOR FORM */}
+          </Button>
         </div>
       </div>
       <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">

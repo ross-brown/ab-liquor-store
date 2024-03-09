@@ -7,16 +7,17 @@ interface ReviewProps {
 
 export default function Review({ data }: ReviewProps) {
   return (
-    <div className="py-12">
+    <div className="py-10">
       <div className="flex items-center">
-        {/* <Image /> */}
-        <div className="">
-          <h4 className="text-sm font-bold text-gray-900">
-            {data.author}
-          </h4>
-          <p className="text-sm text-gray-400">
-            {data.createdAt}
-          </p>
+        <div className="flex flex-col gap-3">
+          <div>
+            <h4 className="text-sm font-bold text-gray-900">
+              {data.author}
+            </h4>
+            <p className="text-sm text-gray-400">
+              {data.createdAt}
+            </p>
+          </div>
           <div className="mt-1 flex items-center">
             <ReviewStars stars={data.stars} />
           </div>
