@@ -9,7 +9,6 @@ import Button from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,10 +16,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import ReviewStarsRadio from "./ui/review-stars-radio";
 import Rating from "@mui/material/Rating";
 import { FaStar } from "react-icons/fa";
+import useReviewModal from "@/hooks/use-review-modal";
 
 // export interface Review {
 //   id: string;
@@ -52,6 +50,8 @@ const formSchema = z.object({
 type formValues = z.infer<typeof formSchema>;
 
 export default function ReviewForm() {
+  const { onClose } = useReviewModal();
+
   const form = useForm<formValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -66,15 +66,16 @@ export default function ReviewForm() {
     console.log(values);
     toast.success("Review submitted");
     form.reset();
+    onClose();
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="px-6 pb-16 pt-16 sm:pb-24 lg:px-8 lg:py-20"
+        className="mx-auto mt-12 max-w-xl sm:mt-16"
       >
-        <div className="mx-auto max-w-[36rem] lg:mr-0 lg:max-w-[32rem]">
+        <div className="mx-auto max-w-[36rem] lg:mr-0 ">
           <div className="grid grid-cols-1 gap-y-6">
             <FormField
               control={form.control}
@@ -82,7 +83,7 @@ export default function ReviewForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="font-semibold leading-6 text-gray-900">
-                    Name
+                    Name*
                   </FormLabel>
                   <FormControl>
                     <Input {...field} />
@@ -97,7 +98,7 @@ export default function ReviewForm() {
               render={({ field }) => (
                 <FormItem className="space-y-3">
                   <FormLabel className="font-semibold leading-6 text-gray-900">
-                    Rating
+                    Rating*
                   </FormLabel>
                   <FormControl>
                     <div>
@@ -124,7 +125,7 @@ export default function ReviewForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="font-semibold leading-6 text-gray-900">
-                    Review
+                    Review*
                   </FormLabel>
                   <FormControl>
                     <Textarea {...field} rows={10} />

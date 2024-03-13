@@ -19,10 +19,10 @@ const useCart = create(
       const currentItems = get().items;
       const existingItem = currentItems.find((item) => item.product.id === data.id);
 
-      if (existingItem) return toast("Item already in your cart.");
+      if (existingItem) return toast(`${data.name} is already in your cart.`);
 
       set({ items: [...get().items, { product: data, quantity }] });
-      toast.success("Item added to cart.");
+      toast.success(`${quantity} ${data.name}(s) added to cart.`);
     },
     updateItem: (id, newQuantity) => {
       const updatedItems = get().items.map((item) => {
@@ -35,7 +35,7 @@ const useCart = create(
     },
     removeItem: (id: string) => {
       set({ items: [...get().items.filter(item => item.product.id !== id)] });
-      toast.success("Item removed from cart.");
+      toast.success(`Item removed from cart.`);
     },
     removeAll: () => {
       set({ items: [] });
