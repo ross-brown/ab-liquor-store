@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100">
+    <footer className="bg-gray-100 mt-24">
       <div className="mx-auto max-w-[80rem] px-5 pb-8 pt-16 sm:pt-24 md:px-8">
         <div className="">
           <div className="space-y-8 relative">
@@ -35,7 +35,7 @@ export default function Footer() {
               <div className="flex gap-3">
                 <Phone className="h-6 w-6 text-gray-600" />
                 <p className="text-gray-600">
-                 <a href="tel:5124456319">(512) 445-6319</a>
+                  <a href="tel:5124456319">(512) 445-6319</a>
                 </p>
               </div>
             </div>
@@ -74,6 +74,11 @@ export default function Footer() {
                   About Us
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
+                  <li>
+                    <Link href="/our-story" className="text-sm leading-6 text-gray-600">
+                      Our Story
+                    </Link>
+                  </li>
                   <li>
                     <Link href="/faq" className="text-sm leading-6 text-gray-600">
                       FAQs

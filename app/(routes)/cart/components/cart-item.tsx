@@ -15,6 +15,7 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 import { useState } from "react";
+import QuantityDropdown from "@/components/ui/quantity-dropdown";
 
 interface CartItemProps {
   data: { product: Product, quantity: number; };
@@ -30,7 +31,7 @@ export default function CartItem({ data }: CartItemProps) {
   }
 
   function onQuantityChange(value: string) {
-    setQuantity(value)
+    setQuantity(value);
     cart.updateItem(data.product.id, Number(value));
   }
 
@@ -46,15 +47,19 @@ export default function CartItem({ data }: CartItemProps) {
       </div>
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
         <div className="absolute z-10 right-0 -top-7">
-          <IconButton onClick={onRemove} icon={<X size={15} className="text-red-600" />} />
+          <IconButton
+            onClick={onRemove}
+            icon={<X size={15} className="text-red-600" />}
+            ariaLabel="Remove item"
+          />
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            <p className="text-lg font-semibold text-black">
+            <p className="text-base font-semibold text-black">
               {data.product.name}
             </p>
           </div>
-          <div className="mt-1 flex text-sm">
+          <div className="mt-1 flex text-sm items-start">
             <p className="text-gray-500">{data.product.country.name}</p>
             <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
               {data.product.size.name}
@@ -67,16 +72,7 @@ export default function CartItem({ data }: CartItemProps) {
             <SelectTrigger className="w-16">
               <SelectValue placeholder="Quantity" />
             </SelectTrigger>
-            <SelectContent>
-              {[...Array(10)].map((_, i) => (
-                <SelectItem
-                  key={i}
-                  value={(i + 1).toString()}
-                >
-                  {i + 1}
-                </SelectItem>
-              ))}
-            </SelectContent>
+            <QuantityDropdown maxQuantity={10}/>
           </Select>
         </div>
       </div>
