@@ -1,15 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from "@clerk/nextjs";
+import { HiOutlineUser } from "react-icons/hi2";
+import { Loader } from "lucide-react";
 
 import getCategories from "@/actions/get-categories";
-
 import Container from "@/components/ui/container";
 import MainNav from "@/components/main-nav";
 import NavbarActions from "@/components/navbar-actions";
-import Image from "next/image";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { FaUser } from "react-icons/fa6";
-import { HiOutlineUser } from "react-icons/hi2";
-
 
 const Navbar = async () => {
   const categories = await getCategories();
@@ -31,14 +36,19 @@ const Navbar = async () => {
             <MainNav data={categories} />
           </div>
           <div className="flex items-center space-x-5">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-            <SignedOut>
-              <SignInButton>
-                <HiOutlineUser className="h-6 w-6 text-gray-800 cursor-pointer" />
-              </SignInButton>
-            </SignedOut>
+            <ClerkLoading>
+              <Loader className="animate-spin" />
+            </ClerkLoading>
+            <ClerkLoaded>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <HiOutlineUser className="h-6 w-6 text-gray-800 cursor-pointer" />
+                </SignInButton>
+              </SignedOut>
+            </ClerkLoaded>
             <NavbarActions />
           </div>
         </div>

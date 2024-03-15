@@ -8,6 +8,21 @@ body,
   height: 100%;
 }
 
+/* Clerk Sign-in/up forms */
+
+.cl-formButtonPrimary {
+  background-color: hsl(265, 18%, 40%);
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: hsl(265, 18%, 50%);
+}
+
+.cl-footerActionLink,
+.cl-footerActionLink:hover {
+  color: hsl(265, 18%, 40%);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
