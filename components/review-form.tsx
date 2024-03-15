@@ -43,7 +43,7 @@ import { useUser } from "@clerk/nextjs";
 // }
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: "Name cannot be empty" }),
+  name: z.string(),
   stars: z.string(),
   review: z.string(),
 });
