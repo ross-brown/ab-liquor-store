@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Rating from "@mui/material/Rating";
 import { FaStar } from "react-icons/fa";
 import useReviewModal from "@/hooks/use-review-modal";
+import { useUser } from "@clerk/nextjs";
 
 // export interface Review {
 //   id: string;
@@ -44,18 +45,21 @@ import useReviewModal from "@/hooks/use-review-modal";
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name cannot be empty" }),
   stars: z.string(),
-  review: z.string().min(1, { message: "Review cannot be empty" })
+  review: z.string(),
 });
 
 type formValues = z.infer<typeof formSchema>;
 
 export default function ReviewForm() {
+  const { user } = useUser();
   const { onClose } = useReviewModal();
+
+  const name = user ? `${user.firstName} ${user.lastName}` : "Customer";
 
   const form = useForm<formValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
+      name,
       review: ""
     }
   });
@@ -83,10 +87,10 @@ export default function ReviewForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="font-semibold leading-6 text-gray-900">
-                    Name*
+                    Name
                   </FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input {...field} disabled />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,10 +129,10 @@ export default function ReviewForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="font-semibold leading-6 text-gray-900">
-                    Review*
+                    Review
                   </FormLabel>
                   <FormControl>
-                    <Textarea {...field} rows={10} />
+                    <Textarea {...field} rows={5} />
                   </FormControl>
                   <FormMessage {...field} />
                 </FormItem>

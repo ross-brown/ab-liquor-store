@@ -4,10 +4,11 @@ import { Review as ReviewType } from "@/types";
 import ReviewStars from "./ui/review-stars";
 import { FaStar } from "react-icons/fa";
 import { Progress } from "./ui/progress";
-import Link from "next/link";
 import Review from "./review";
 import useReviewModal from "@/hooks/use-review-modal";
 import Button from "./ui/button";
+import { useUser } from "@clerk/nextjs";
+import toast from "react-hot-toast";
 
 interface ReviewListProps {
   reviews: ReviewType[];
@@ -15,8 +16,17 @@ interface ReviewListProps {
 
 export default function ReviewList({ reviews }: ReviewListProps) {
   const averageStars = 4; //calculate from reviews
-
   const { onOpen } = useReviewModal();
+  const { user } = useUser();
+
+  function onClick() {
+    if (!user) {
+      toast.error("Must be signed in to write a review")
+      return;
+    };
+
+    onOpen();
+  }
 
   return (
     <div
@@ -125,7 +135,7 @@ export default function ReviewList({ reviews }: ReviewListProps) {
             If you&apos;ve used this product, share your thoughts with other customers
           </p>
           <Button
-            onClick={onOpen}
+            onClick={onClick}
             className={`mt-6 inline-flex w-full items-center justify-center rounded-sm border
              border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100`}
           >
