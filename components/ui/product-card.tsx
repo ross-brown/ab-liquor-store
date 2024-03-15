@@ -12,6 +12,7 @@ import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 import { FaStar } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa6";
+import { getAverageRating } from "@/lib/utils";
 
 interface ProductCardProps {
   data: Product;
@@ -21,6 +22,7 @@ export default function ProductCard({ data }: ProductCardProps) {
   const cart = useCart();
   const { onOpen } = usePreviewModal();
   const router = useRouter();
+  const averageStars = getAverageRating(data.reviews);
 
   function handleClick() {
     router.push(`/product/${data?.id}`);
@@ -72,10 +74,12 @@ export default function ProductCard({ data }: ProductCardProps) {
       </div>
       <div className="flex items-center justify-between gap-x-3 mt-auto">
         <Currency value={data?.price} />
-        <div className="flex items-center gap-x-1 text-base">
-          <FaStar className="text-yellow-400" />
-          <span>4.5</span>
-        </div>
+        {averageStars !== 0 && (
+          <div className="flex items-center gap-x-1 text-base">
+            <FaStar className="text-yellow-400" />
+            <span>{averageStars}</span>
+          </div>
+        )}
       </div>
     </div>
   );

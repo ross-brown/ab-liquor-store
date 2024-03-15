@@ -32,7 +32,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <hr className="my-10" />
           <ProductList title="Related Products" items={suggestedProducts} />
           <hr className="my-10" />
-          <ReviewList reviews={[]} />
+          <ReviewList reviews={product.reviews} />
         </div>
       </Container>
     </div>

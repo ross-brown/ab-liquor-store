@@ -6,8 +6,6 @@ import { X } from "lucide-react";
 import IconButton from "@/components/ui/icon-button";
 import {
   Select,
-  SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";

@@ -21,6 +21,7 @@ export interface Product {
   size: Size;
   country: Country;
   images: Image[];
+  reviews: Review[];
 }
 
 export interface Image {
@@ -42,6 +43,7 @@ export interface Country {
 
 export interface Review {
   id: string;
+  storeUserId: string;
   author: string;
   text: string;
   stars: number;

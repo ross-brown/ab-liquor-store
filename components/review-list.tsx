@@ -2,26 +2,26 @@
 
 import { Review as ReviewType } from "@/types";
 import ReviewStars from "./ui/review-stars";
-import { FaStar } from "react-icons/fa";
-import { Progress } from "./ui/progress";
 import Review from "./review";
 import useReviewModal from "@/hooks/use-review-modal";
 import Button from "./ui/button";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
+import ReviewPercents from "./review-percents";
+import { getAverageRating } from "@/lib/utils";
 
 interface ReviewListProps {
   reviews: ReviewType[];
 }
 
 export default function ReviewList({ reviews }: ReviewListProps) {
-  const averageStars = 4; //calculate from reviews
   const { onOpen } = useReviewModal();
   const { user } = useUser();
+  const averageStars = getAverageRating(reviews);
 
   function onClick() {
     if (!user) {
-      toast.error("Must be signed in to write a review")
+      toast.error("Must be signed in to write a review");
       return;
     };
 
@@ -47,86 +47,7 @@ export default function ReviewList({ reviews }: ReviewListProps) {
             Based on {reviews.length} reviews
           </p>
         </div>
-        <div className="mt-6">
-          <h3 className="sr-only">Review data</h3>
-          <dl className="space-y-3">
-            <div className="flex items-center text-sm">
-              <dt className="flex items-center flex-1">
-                <p className="w-3 font-medium text-gray-900">
-                  5
-                  <span className="sr-only"> star reviews</span>
-                </p>
-                <div className="ml-1 flex flex-1 items-center">
-                  <FaStar className="w-5 h-5 shrink-0 text-yellow-400" />
-                  <Progress className="flex-1 ml-3 relative" value={50} />
-                </div>
-              </dt>
-              <dd className="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">
-                {50}%
-              </dd>
-            </div>
-            <div className="flex items-center text-sm">
-              <dt className="flex items-center flex-1">
-                <p className="w-3 font-medium text-gray-900">
-                  4
-                  <span className="sr-only"> star reviews</span>
-                </p>
-                <div className="ml-1 flex flex-1 items-center">
-                  <FaStar className="w-5 h-5 shrink-0 text-yellow-400" />
-                  <Progress className="flex-1 ml-3 relative" value={50} />
-                </div>
-              </dt>
-              <dd className="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">
-                {50}%
-              </dd>
-            </div>
-            <div className="flex items-center text-sm">
-              <dt className="flex items-center flex-1">
-                <p className="w-3 font-medium text-gray-900">
-                  3
-                  <span className="sr-only"> star reviews</span>
-                </p>
-                <div className="ml-1 flex flex-1 items-center">
-                  <FaStar className="w-5 h-5 shrink-0 text-yellow-400" />
-                  <Progress className="flex-1 ml-3 relative" value={50} />
-                </div>
-              </dt>
-              <dd className="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">
-                {50}%
-              </dd>
-            </div>
-            <div className="flex items-center text-sm">
-              <dt className="flex items-center flex-1">
-                <p className="w-3 font-medium text-gray-900">
-                  2
-                  <span className="sr-only"> star reviews</span>
-                </p>
-                <div className="ml-1 flex flex-1 items-center">
-                  <FaStar className="w-5 h-5 shrink-0 text-yellow-400" />
-                  <Progress className="flex-1 ml-3 relative" value={50} />
-                </div>
-              </dt>
-              <dd className="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">
-                {50}%
-              </dd>
-            </div>
-            <div className="flex items-center text-sm">
-              <dt className="flex items-center flex-1">
-                <p className="w-3 font-medium text-gray-900">
-                  1
-                  <span className="sr-only"> star reviews</span>
-                </p>
-                <div className="ml-1 flex flex-1 items-center">
-                  <FaStar className="w-5 h-5 shrink-0 text-yellow-400" />
-                  <Progress className="flex-1 ml-3 relative" value={50} />
-                </div>
-              </dt>
-              <dd className="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">
-                {50}%
-              </dd>
-            </div>
-          </dl>
-        </div>
+        <ReviewPercents reviews={reviews} />
         <div className="mt-10">
           <h3 className="text-lg font-medium text-gray-900">
             Share your thoughts
@@ -146,29 +67,17 @@ export default function ReviewList({ reviews }: ReviewListProps) {
       <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
         <h3 className="sr-only">Recent reviews</h3>
         <div className="flow-root">
+          {reviews.length === 0 && (
+            <p
+              className="text-gray-500 text-center mt-10 lg:mt-0"
+            >
+              No reviews yet.
+            </p>
+          )}
           <div className="-my-12 divide-y divide-gray-200">
-            <Review data={{
-              id: "99",
-              author: "Michelle Chahda",
-              text: "This stuff is AMAZING! I highly recommend!",
-              stars: 5,
-              createdAt: "Mar, 6, 2023"
-            }} />
-            <Review data={{
-              id: "93",
-              author: "Ross Brown",
-              text: "This is another review",
-              stars: 3,
-              createdAt: "Mar, 6, 2023"
-            }}
-            />
-            <Review data={{
-              id: "912",
-              author: "Stephen Brown",
-              text: "Never a let down. Good for football games and gatherings on the weekends.",
-              stars: 4,
-              createdAt: "Mar, 6, 2023"
-            }} />
+            {reviews.map(review => (
+              <Review key={review.id} data={review} />
+            ))}
           </div>
         </div>
       </div>

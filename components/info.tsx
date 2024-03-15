@@ -11,6 +11,7 @@ import { useState } from "react";
 import ReviewStars from "./ui/review-stars";
 import { FaCartPlus } from "react-icons/fa6";
 import QuantityDropdown from "./ui/quantity-dropdown";
+import { getAverageRating } from "@/lib/utils";
 
 interface InfoProps {
   data: Product;
@@ -33,8 +34,8 @@ export default function Info({ data }: InfoProps) {
           <Currency value={data.price} />
         </p>
         <div className="flex items-center">
-          <ReviewStars stars={5} />
-          <p className="text-sm ml-2 text-gray-500">{53} reviews</p>
+          <ReviewStars stars={getAverageRating(data.reviews)} />
+          <p className="text-sm ml-2 text-gray-500">{data.reviews.length} review{data.reviews.length !== 1 && "s"}</p>
         </div>
       </div>
       <hr className="my-4" />

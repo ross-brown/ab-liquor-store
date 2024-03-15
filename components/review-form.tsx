@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import { useUser } from "@clerk/nextjs";
+import axios from "axios";
+import { usePathname, useRouter } from "next/navigation";
+import { FaStar } from "react-icons/fa";
 
 import Button from "@/components/ui/button";
 import {
@@ -17,30 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Rating from "@mui/material/Rating";
-import { FaStar } from "react-icons/fa";
 import useReviewModal from "@/hooks/use-review-modal";
-import { useUser } from "@clerk/nextjs";
-
-// export interface Review {
-//   id: string;
-//   author: string;
-//   text: string;
-//   stars: number;
-//   createdAt: string;
-// }
-
-// model Review {
-//   id        String   @id @default(uuid())
-//   productId String
-//   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-//   author    String
-//   text      String
-//   stars     Int
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   @@index([productId])
-// }
 
 const formSchema = z.object({
   name: z.string(),
@@ -52,7 +33,10 @@ type formValues = z.infer<typeof formSchema>;
 
 export default function ReviewForm() {
   const { user } = useUser();
+  const router = useRouter();
   const { onClose } = useReviewModal();
+  const pathname = usePathname();
+  const productId = pathname.slice(9);
 
   const name = user ? `${user.firstName} ${user.lastName}` : "Customer";
 
@@ -65,12 +49,17 @@ export default function ReviewForm() {
   });
 
   async function onSubmit(values: formValues) {
-    // mock API call for 2 seconds
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
-    toast.success("Review submitted");
+    toast.promise(axios.post(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
+      values, productId, storeUserId: user?.id || ""
+    }), {
+      loading: "Submitting review...",
+      success: "Review submitted",
+      error: "Failed to submit review"
+    });
+
     form.reset();
     onClose();
+    router.refresh();
   }
 
   return (
