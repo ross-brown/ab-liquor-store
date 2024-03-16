@@ -44,7 +44,7 @@ export default function ReviewList({ reviews }: ReviewListProps) {
             <p className="sr-only">{averageStars} out of 5 stars</p>
           </div>
           <p className="ml-2 text-sm text-gray-900">
-            Based on {reviews.length} reviews
+            Based on {reviews.length} review{reviews.length !== 1 && "s"}
           </p>
         </div>
         <ReviewPercents reviews={reviews} />
