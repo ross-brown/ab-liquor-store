@@ -1,5 +1,7 @@
 import GallerySkeleton from "@/components/skeletons/gallery-skeleton";
 import InfoSkeleton from "@/components/skeletons/info-skeleton";
+import ProductListSkeleton from "@/components/skeletons/product-list-skeleton";
+import ReviewListSkeleton from "@/components/skeletons/review-list-skeleton";
 import Container from "@/components/ui/container";
 
 
@@ -15,9 +17,9 @@ export default function Loading() {
             </div>
           </div>
           <hr className="my-10" />
-          {/* <ProductList title="Related Products" items={suggestedProducts} /> */}
+          <ProductListSkeleton />
           <hr className="my-10" />
-          {/* <ReviewList reviews={product.reviews} /> */}
+          <ReviewListSkeleton />
         </div>
       </Container>
     </div>
