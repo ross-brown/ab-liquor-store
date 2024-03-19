@@ -20,7 +20,7 @@ export default function Review({ data }: ReviewProps) {
   const router = useRouter();
 
   async function onRemove() {
-    toast.promise(axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${data.id}`), {
+    await toast.promise(axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${data.id}`), {
       loading: "Deleting review",
       success: "Review deleted",
       error: "Failed to delete review"

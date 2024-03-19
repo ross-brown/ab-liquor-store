@@ -49,7 +49,7 @@ export default function ReviewForm() {
   });
 
   async function onSubmit(values: formValues) {
-    toast.promise(axios.post(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
+    await toast.promise(axios.post(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
       values, productId, storeUserId: user?.id || ""
     }), {
       loading: "Submitting review...",
@@ -57,7 +57,6 @@ export default function ReviewForm() {
       error: "Failed to submit review"
     });
 
-    form.reset();
     onClose();
     router.refresh();
   }
