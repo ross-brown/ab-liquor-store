@@ -1,9 +1,12 @@
+import getCategories from "@/actions/get-categories";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 
-export default function Footer() {
+export default async function Footer() {
+  const categories = await getCategories();
+
   return (
     <footer className="bg-gray-100 mt-24">
       <div className="mx-auto max-w-[80rem] px-5 pb-8 pt-16 sm:pt-24 md:px-8">
@@ -47,26 +50,16 @@ export default function Footer() {
                   Shop
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Wine
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Beer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Liquor
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-sm leading-6 text-gray-600">
-                      Tobacco
-                    </a>
-                  </li>
+                  {categories.map(({ id, name }) => (
+                    <li key={id}>
+                      <Link
+                        href={`/category/${id}`}
+                        className="text-sm leading-6 text-gray-600"
+                      >
+                        {name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
