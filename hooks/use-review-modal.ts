@@ -1,7 +1,5 @@
 import { create } from "zustand";
 
-// import { Product } from "@/types";
-
 interface ReviewModalStore {
   isOpen: boolean;
   onOpen: () => void;

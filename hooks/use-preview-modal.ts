@@ -9,8 +9,6 @@ interface PreviewModalStore {
   onClose: () => void;
 }
 
-//TODO: adjust to also take in review data so the modal can show that
-
 const usePreviewModal = create<PreviewModalStore>((set) => ({
   isOpen: false,
   data: undefined,
