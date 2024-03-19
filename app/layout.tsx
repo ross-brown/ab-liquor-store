@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
@@ -8,7 +8,7 @@ import Footer from "@/components/footer";
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
 
-const font = Lato({ subsets: ["latin"], weight: ["100", "300", "400", "700", "900"] });
+const font = Montserrat({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "900"] });
 
 export const metadata: Metadata = {
   title: "A&B LIQUOR | Austin, TX",
