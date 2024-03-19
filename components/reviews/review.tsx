@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
 import { Review } from "@/types";
-import ReviewStars from "./ui/review-stars";
-import IconButton from "./ui/icon-button";
+import ReviewStars from "../ui/review-stars";
+import IconButton from "../ui/icon-button";
 
 const DATE_FORMAT = "MMMM dd, yyyy";
 

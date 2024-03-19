@@ -1,5 +1,5 @@
 import { FaStar } from "react-icons/fa";
-import { Progress } from "./ui/progress";
+import { Progress } from "../ui/progress";
 import { Review } from "@/types";
 import { getRatingPercents } from "@/lib/utils";
 

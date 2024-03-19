@@ -13,8 +13,8 @@ import { Loader } from "lucide-react";
 
 import getCategories from "@/actions/get-categories";
 import Container from "@/components/ui/container";
-import MainNav from "@/components/main-nav";
-import NavbarActions from "@/components/navbar-actions";
+import MainNav from "@/components/navbar/main-nav";
+import NavbarActions from "@/components/navbar/navbar-actions";
 
 const Navbar = async () => {
   const categories = await getCategories();

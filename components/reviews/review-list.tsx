@@ -1,10 +1,10 @@
 "use client";
 
 import { Review as ReviewType } from "@/types";
-import ReviewStars from "./ui/review-stars";
+import ReviewStars from "../ui/review-stars";
 import Review from "./review";
 import useReviewModal from "@/hooks/use-review-modal";
-import Button from "./ui/button";
+import Button from "../ui/button";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 import ReviewPercents from "./review-percents";

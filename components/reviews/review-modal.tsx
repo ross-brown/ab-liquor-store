@@ -1,6 +1,6 @@
 "use client";
 
-import Modal from "./ui/modal";
+import Modal from "../ui/modal";
 import useReviewModal from "@/hooks/use-review-modal";
 import ReviewForm from "./review-form";
 

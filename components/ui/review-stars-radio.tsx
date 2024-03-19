@@ -9,7 +9,6 @@ interface StarsRadioGroupProps {
 }
 
 export default function ReviewStarsRadio({ onChange, value }: StarsRadioGroupProps) {
-  console.log("value in radio component", value, typeof value);
   return (
     <div>
       <Rating

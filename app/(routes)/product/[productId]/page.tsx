@@ -3,11 +3,7 @@ import getProducts from "@/actions/get-products";
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 import ProductList from "@/components/product-list";
-import ReviewList from "@/components/review-list";
-import GallerySkeleton from "@/components/skeletons/gallery-skeleton";
-import InfoSkeleton from "@/components/skeletons/info-skeleton";
-import ProductListSkeleton from "@/components/skeletons/product-list-skeleton";
-import ReviewListSkeleton from "@/components/skeletons/review-list-skeleton";
+import ReviewList from "@/components/reviews/review-list";
 import Container from "@/components/ui/container";
 
 interface ProductPageProps {
