@@ -5,10 +5,11 @@ import ReviewStars from "../ui/review-stars";
 import Review from "./review";
 import useReviewModal from "@/hooks/use-review-modal";
 import Button from "../ui/button";
-import { useUser } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 import ReviewPercents from "./review-percents";
 import { getAverageRating } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 interface ReviewListProps {
   reviews: ReviewType[];
@@ -16,15 +17,10 @@ interface ReviewListProps {
 
 export default function ReviewList({ reviews }: ReviewListProps) {
   const { onOpen } = useReviewModal();
-  const { user } = useUser();
   const averageStars = getAverageRating(reviews);
+  const pathname = usePathname();
 
   function onClick() {
-    if (!user) {
-      toast.error("Must be signed in to write a review");
-      return;
-    };
-
     onOpen();
   }
 
@@ -55,13 +51,25 @@ export default function ReviewList({ reviews }: ReviewListProps) {
           <p className="mt-1 text-sm text-gray-600">
             If you&apos;ve used this product, share your thoughts with other customers
           </p>
-          <Button
-            onClick={onClick}
-            className={`mt-6 inline-flex w-full items-center justify-center rounded-sm border
-             border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100`}
-          >
-            Write a review
-          </Button>
+          <SignedIn>
+            <Button
+              onClick={onClick}
+              className={`mt-6 inline-flex w-full items-center justify-center rounded-sm border
+            border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100`}
+            >
+              Write a review
+            </Button>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal" afterSignInUrl={pathname}>
+              <Button
+                className={`mt-6 inline-flex w-full items-center justify-center rounded-sm border
+              border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 sm:w-auto lg:w-full hover:bg-gray-100`}
+              >
+                Write a review
+              </Button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </div>
       <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
