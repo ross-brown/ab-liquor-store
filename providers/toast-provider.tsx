@@ -8,7 +8,7 @@ export default function ToastProvider() {
     <Toaster
       toastOptions={{
         style: {
-          fontSize: "1.25rem",
+          fontSize: "1rem",
           fontWeight: "bold",
           padding: "0.75rem 1rem"
         }

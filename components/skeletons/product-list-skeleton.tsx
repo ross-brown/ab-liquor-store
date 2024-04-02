@@ -9,6 +9,7 @@ export default function ProductListSkeleton() {
         <Skeleton className="rounded-xl p-3 space-y-4 aspect-square relative" />
         <Skeleton className="rounded-xl p-3 space-y-4 aspect-square relative" />
         <Skeleton className="rounded-xl p-3 space-y-4 aspect-square relative" />
+        <Skeleton className="rounded-xl p-3 space-y-4 aspect-square relative" />
       </div>
     </div>
   );
