@@ -61,7 +61,7 @@ const Navbar2 = ({ categories }: NavbarProps) => {
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
+            <div className="space-y-0.5 px-2 pb-3 pt-2">
               {categories.map((item) => (
                 <Disclosure.Button
                   key={item.id}
