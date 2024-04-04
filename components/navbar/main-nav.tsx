@@ -20,7 +20,7 @@ const MainNav = ({ data }: MainNavProps) => {
 
   return (
     <nav
-      className="mx-6 flex items-center space-x-6 lg:space-x-10"
+      className="mx-6 flex items-center space-x-4 lg:space-x-6 xl:space-x-10"
     >
       {routes.map(route => (
         <Link
